@@ -1,5 +1,5 @@
 # Vue 3 Drag and drop plugin
-This plugin was created to make drag and drop in vue easier and also get handle dragging without ugly native shadow elements.
+This plugin was created to make drag and drop in vue easier and also handle dragging without ugly native shadow elements.
 
 ## Instalation:
 
