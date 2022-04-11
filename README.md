@@ -4,9 +4,16 @@ This plugin was created to make drag and drop in vue easier and also handle drag
 ## Instalation:
 
 Add plugin to your application instance
+```bash
+npm install vue-better-drag
+```
+
 ```javascript
+import '../node_modules/vue-better-drag/index.css'
+import vueBetterDrag from 'vue-better-drag'
+
 const app = createApp()
-app.use(dragAndDrop)
+app.use(vueBetterDrag)
 ```
 
 Add this global css function to your project
