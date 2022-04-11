@@ -35,14 +35,14 @@ class DraggableElement {
       const dropArea = targetElements.find((element) => element?.isDropArea)
       
       if (dropArea && !this.isIntersecting) {
-        this.payload?.arg('ENTER', dropArea)
+        if (this.payload.arg) this.payload?.arg('ENTER', dropArea)
         this.lastDropArea = dropArea
         this.isIntersecting = true
         dropArea?.dropAreaHandler({type: 'ENTER', value: this.payload.value})
       }
 
       if (!dropArea && this.isIntersecting) {
-        this.payload?.arg('LEAVE', this.lastDropArea)
+        if (this.payload.arg) this.payload?.arg('LEAVE', this.lastDropArea)
         this.isIntersecting = false
         this.lastDropArea?.dropAreaHandler({type: 'LEAVE', value: this.payload.value})
         this.lastDropArea = undefined
@@ -71,7 +71,7 @@ class DraggableElement {
     const dropArea = targetElements.find((element) => element?.isDropArea)
     
     if (dropArea) {
-      this.payload?.arg('DROP', dropArea)
+      if (this.payload.arg) this.payload?.arg('DROP', dropArea)
       dropArea?.dropAreaHandler({type: 'DROP', value: this.payload.value})
     }
   }
@@ -93,14 +93,14 @@ class DraggableElement {
       const dropArea = targetElements.find((element) => element?.isDropArea)
       
       if (dropArea && !this.isIntersecting) {
-        this.payload?.arg('ENTER', dropArea)
+        if (this.payload.arg) this.payload?.arg('ENTER', dropArea)
         this.lastDropArea = dropArea
         this.isIntersecting = true
         dropArea?.dropAreaHandler({type: 'ENTER', value: this.payload.value})
       }
 
       if (!dropArea && this.isIntersecting) {
-        this.payload?.arg('LEAVE', this.lastDropArea)
+        if (this.payload.arg) this.payload?.arg('LEAVE', this.lastDropArea)
         this.isIntersecting = false
         this.lastDropArea?.dropAreaHandler({type: 'LEAVE', value: this.payload.value})
         this.lastDropArea = undefined
@@ -127,7 +127,7 @@ class DraggableElement {
     const dropArea = targetElements.find((element) => element?.isDropArea)
     
     if (dropArea) {
-      this.payload?.arg('DROP', dropArea)
+      if (this.payload.arg) this.payload?.arg('DROP', dropArea)
       dropArea?.dropAreaHandler({type: 'DROP', value: this.payload.value})
     }
   }
@@ -141,6 +141,9 @@ class DroppableElement {
     this.element = element
     this.handler = handler
     this.element.isDropArea = true
+    if (!handler || typeof handler !== 'function') {
+      console.error('v-droppable handler is missing')
+    }
     this.element.dropAreaHandler = this.handler
   }
 }
