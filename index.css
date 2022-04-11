@@ -1,0 +1,5 @@
+.v-draggable-drag {
+  position: fixed;
+  user-select: none;
+  pointer-events: none;
+}
